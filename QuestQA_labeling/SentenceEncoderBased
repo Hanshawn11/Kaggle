@@ -56,7 +56,7 @@ vec = text2vec(X1,X2,X3)
 X = [vec[0],vec[1],vec[2]] # inputs
 y = df_train[target_columns].values.tolist() # targets
 
-# X,y  数据类型是numpy array
+# X,y  data type : numpy array
 y = np.array(y)
 
 # activation func
@@ -76,10 +76,10 @@ input2 = Input(shape=(embed_size,),name='X2')
 input3 = Input(shape=(embed_size,),name='X3')
 
 # second layer
-x = K.concatenate([input1,input2,input3])  # 合并
-x = layers.Dense(256,activation=swish)(x)  # 256节点
-x = layers.Dropout(0.2)(x)                 # 随机丢掉20%节点， 防止过拟合
-x = layers.BatchNormalization()(x)         # 节点学习到的参数标准化
+x = K.concatenate([input1,input2,input3]) 
+x = layers.Dense(256,activation=swish)(x)  
+x = layers.Dropout(0.2)(x)                 # Prevent overfitting
+x = layers.BatchNormalization()(x)         
 
 # third layer
 x = layers.Dense(64,activation='relu')(x)   
@@ -89,7 +89,7 @@ x = layers.BatchNormalization()(x)
 # output layer
 output = layers.Dense(len(target_columns),activation='sigmoid',name='output')(x)
 
-MODEL = Model(inputs=[input1,input2,input3],outputs=[output],name='ka1')  # 多个输入时神经网络的写法 inputs = [... ]
+MODEL = Model(inputs=[input1,input2,input3],outputs=[output],name='ka1')  # multiple inputs = [..., ..., ... ]
 MODEL.summary()
 
 # ---------Train the network------------
@@ -99,7 +99,7 @@ reduce_lr = callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1,
                               
 optimizer = optimizers.Adadelta()
 MODEL.compile(optimizer=optimizer, loss='binary_crossentropy')
-MODEL.fit(X, y, epochs=30, validation_split=.1,batch_size=32,callbacks=[reduce_lr]) # X,y 的数据类型都是numpy ndarray, 学习30轮
+MODEL.fit(X, y, epochs=30, validation_split=.1,batch_size=32,callbacks=[reduce_lr]) 
 
 
 # -------predict test data----------------------
@@ -116,6 +116,7 @@ pred_vec = text2vec(X_1,X_2,X_3)
 pred_X = [pred_vec[0], pred_vec[1], pred_vec[2]]  
 pred_y = MODEL.predict(pred_X)
 
-df_sample[target_columns] = pred_y   # 将sample文件中的features columns 对应列的数据改为预测出来的数据
+# file 
+df_sample[target_columns] = pred_y   
 df_sample.head()
-df_sample.to_csv("submission.csv", index = False) # dataframe 生成csv 文件
+df_sample.to_csv("submission.csv", index = False) 
