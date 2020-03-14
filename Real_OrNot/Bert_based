@@ -1,4 +1,4 @@
-
+# predict whether a person’s words(tweet) are actually announcing a disaster
 import numpy as np
 import pandas as pd
 import os
