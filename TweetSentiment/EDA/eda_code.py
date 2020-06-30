@@ -98,3 +98,37 @@ plt.title('positive sentiment')
 plt.axis('off')
 plt.savefig('words_cloud.png')
 plt.show()
+
+#饼图
+news = train.groupby('sentiment')
+pos_data = news.get_group('positive').shape[0]
+neg_data =  news.get_group('negative').shape[0]
+neutral_data =  news.get_group('neutral').shape[0]
+
+test = pd.read_csv('test.csv')
+test_new = test.groupby('sentiment')
+pos = test_new.get_group('positive').shape[0]
+neg =  test_new.get_group('negative').shape[0]
+neutral =  test_new.get_group('neutral').shape[0]
+
+fig = plt.gcf()
+fig.set_size_inches(6, 8)
+fig1 = plt.subplot(121)
+
+data = [ pos_data, neg_data, neutral_data]     # data 
+lables = ['positive', 'negative', 'neutral']  
+colors = ['lightgreen', 'grey', 'lightblue']
+explode = (0, 0, 0.1)        #设置第三款分割出
+plt.pie(data,labels = lables, explode = explode, shadow=True,colors = colors, autopct= '%1.2f%%', pctdistance = 0.5) # pctdistance 距离圆心距离
+plt.title('train data')
+
+fig2 = plt.subplot(122)
+data = [pos, neg, neutral]
+lables = ['positive', 'negative', 'neutral']
+colors = ['lightgreen', 'grey', 'lightblue']
+explode = (0, 0, 0.1)
+plt.pie(data,labels = lables, explode = explode, shadow=True,colors = colors, autopct= '%1.2f%%', pctdistance = 0.5)
+plt.title('test data')
+
+plt.savefig('senti distribute.png')
+plt.show()
