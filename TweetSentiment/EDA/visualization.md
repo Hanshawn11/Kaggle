@@ -5,7 +5,7 @@ Explore data
 ![image1](https://github.com/Hanshawn11/Kaggle/blob/master/TweetSentiment/EDA/images/urls%20(1).png)  
 
 
-[2] 查看'selected_text'字段中单词数量分布情况。从左到右依次为negative - positive - neutral
+[2] 查看'selected_text'字段中单词数量分布情况。从左到右依次为negative - positive - neutral。  selected_text文本的最大单词数量是35， 大多数都集中在5个单词以下，设置encode的长度时可以设定为35个单词， 如果是按字符编码可以设定为120左右。  
     
   ![word_counts](https://raw.githubusercontent.com/Hanshawn11/Kaggle/master/TweetSentiment/EDA/images/word_counts.bmp)
   
@@ -13,5 +13,5 @@ Explore data
   ![word_clouds](https://raw.githubusercontent.com/Hanshawn11/Kaggle/master/TweetSentiment/EDA/images/word_cloud.bmp)
   
  
-[4] 查看各类情感在训练数据和测试数据中的分布情况  
+[4] 查看各类情感在训练数据和测试数据中的分布情况， 分布情况几乎均衡， 做交叉验证时应该保证分布情况和训练数据的分布情况一致。  
 ![distribute](https://github.com/Hanshawn11/Kaggle/blob/master/TweetSentiment/EDA/images/senti%20distribute.png)
