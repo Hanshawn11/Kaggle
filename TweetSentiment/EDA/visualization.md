@@ -7,3 +7,6 @@ Explore data
 [2] 查看'selected_text'字段中单词数量分布情况。从左到右依次为negative - positive - neutral
   
   ![word_counts](https://raw.githubusercontent.com/Hanshawn11/Kaggle/master/TweetSentiment/EDA/word_counts.bmp)
+  
+[3] 统计在各类情感中出现次数最多的单词。  
+  ![word_clouds](https://github.com/Hanshawn11/Kaggle/blob/master/TweetSentiment/EDA/images/words_cloud.png)
