@@ -1,6 +1,7 @@
 
 关键：寻找token偏移量offset
-生成text长度的0向量， text字符串定位answer的开始位置，加answer长度为结束位置,cover部分为1, 记录encode后每个token的起始位置，覆盖1的token被认为是答案的一部分, 记录这些token，第一个和最后一个token则是真正的起始位置, start 0矩阵， n*m, n 为数据量， m为最大长度, 设置start token位置为1, end 0矩阵同理
+生成text长度的0向量， text字符串定位answer的开始位置，加answer长度为结束位置,cover部分为1, 记录encode后每个token的起始位置，
+覆盖1的token被认为是答案的一部分, 记录这些token，第一个和最后一个token则是真正的起始位置, start 0矩阵， n*m, n 为数据量， m为最大长度, 设置start token位置为1, end 0矩阵同理
 
 random seed 对结果有 +- 0.02左右的影响，原因不明
 
