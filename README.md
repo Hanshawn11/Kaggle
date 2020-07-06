@@ -1,2 +1,4 @@
-# Kaggle
-KaggleCompetition
+Kaggle
+
+record my kaggle codes
+
